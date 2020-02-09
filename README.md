@@ -1,4 +1,5 @@
 # CppQtNotes
+[MarkDown语法教程](https://www.jianshu.com/p/q81RER) 
 
 ## Qt
 
@@ -11,7 +12,7 @@ setAttribute(Qt::WA_DeleteOnClose);
 
 ## Cpp
 1.  文本读取
-```
+```cpp
 #include <iostream>
 #include <fstream>
     using namespace std;
@@ -29,7 +30,7 @@ setAttribute(Qt::WA_DeleteOnClose);
     string strText = string(pText);
 ```
 2. ms级别时间
-```
+```cpp
 #include <chrono>
 using namespace std;
 using chrono::high_resolution_clock;
@@ -41,7 +42,7 @@ using chrono::milliseconds;
 ```
 
 3. 随机数
-```
+```cpp
 #include <random>
     default_random_engine randEng(time(nullptr));
     uniform_int_distribution<> dis(1,5);
