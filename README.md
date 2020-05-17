@@ -1,6 +1,8 @@
 # CppQtNotes
 [MarkDown语法教程](https://www.jianshu.com/p/q81RER) 
 
+## ![QML](qml.md)
+
 ## Qt
 
 ####  关闭时析构窗口
@@ -46,6 +48,41 @@ setAttribute(Qt::WA_DeleteOnClose);
 	out.write(pBuff, iLen);
 	
 ```
+
+#### 容器
+(1)、vector：可变大小数组。支持快速随机访问。在尾部之外的位置插入或删除元素可能很慢。
+
+(2)、deque：双端队列。支持快速随机访问。在头尾位置插入/删除速度很快。
+
+(3)、list：双向链表。只支持双向顺序访问。在list中任何位置进行插入/删除操作速度都很快。
+
+(4)、forward_list：单向链表。只支持单向顺序访问。在链表任何位置进行插入/删除操作速度都很快。
+
+(5)、array：固定大小数组。支持快速随机访问。不能添加或删除元素。
+
+(6)、string：与vector相似的容器，但专门用于保存字符。随机访问快。在尾部插入/删除速度快。
+
+以下是一些选择容器的基本原则：
+
+(1)、除法你有很好的理由选择其他容器，否则应该使用vector；
+
+(2)、如果你的程序有很多小的元素，且空间的额外开销很重要，则不要使用list或forward_list；
+
+(3)、如果程序要求随机访问元素，应使用vector或deque；
+
+(4)、如果程序要求在容器的中间插入或删除元素，应使用list或forward_list；
+
+(5)、如果程序需要在头尾位置插入或删除元素，但不会在中间位置进行插入或删除操作，则使用deque；
+
+(6)、如果程序只有在读取输入时才需要在容器中间位置插入元素，随后需要随机访问元素，则：首先，确定是否真的需要在容器中间位置添加元素。当处理输入数据时，通常可以很容器地向vector追加数据，然后再调用标准库的sort函数来重排容器中的元素，从而避免在中间位置添加元素。如果必须在中间位置插入元素，考虑在输入阶段使用list，一旦输入完成，将list中的内容拷贝到一个vector中。
+
+#### stl 骚操作
+    std::for_each( m_attachedSurfaces.begin(), m_attachedSurfaces.end(),
+                   std::bind2nd( std::mem_fun( &QmlVlcVideoSurface::presentFrame ), frame ) );
+				   调用成员函数
+				   
+bind2nd bind1st 将2元函数变成1元 绑定第2/1个参数
+
 #### ms级别时间
 ```cpp
 #include <chrono>
@@ -68,7 +105,7 @@ using chrono::milliseconds;
 ```
 
 #### λ表达式
-```
+```cpp
 auto func = [=](int i)->bool{
 	return false;
 };
@@ -84,3 +121,12 @@ bool b = func(1);
   4. umdh.exe -pn:app.exe -f:"D:/1.log"
   5. umdh.exe -pn:app.exe -f:"D:/2.log"
   6. umdh.exe "D:/1.log" "D:/2.log" > "D:/1.txt"
+  
+ ## 其他
+ 
+ ### github技巧
+ 高级搜索：  in:name language:c++ stars:>1000    也可以是readme\description
+ |字段|必选|类型|说明|
+|----|----|----|----|
+|spid|false|int|专题编号|
+|title|false|string|专题名称|
