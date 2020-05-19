@@ -1,7 +1,7 @@
 # CppQtNotes
 [MarkDown语法教程](https://www.jianshu.com/p/q81RER) 
 
-## ![QML](qml.md)
+## [QML](qml.md)
 
 ## Qt
 
